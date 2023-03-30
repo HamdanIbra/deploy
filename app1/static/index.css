@@ -1,0 +1,23 @@
+.main{
+    display: flex;
+    justify-content: space-around;
+}
+.registration{
+    display: flex;
+}
+.login{
+    display: flex;
+}
+input{
+    display: block;
+    margin: 16px 0px;
+    padding: 0px;
+}
+header{
+    display: flex;
+    justify-content: space-around;
+}
+footer{
+    text-align: center;
+    color :red;
+}

@@ -1,0 +1,25 @@
+header{
+    width:20%;
+    display: flex;
+    margin-left: auto;
+    margin-right: 0px;
+}
+header p{
+    margin-right: 15px;
+}
+.container{
+    display: flex;
+}
+.description{
+    height: 5rem;
+    margin-bottom:2rem;
+}
+.right-container{
+    margin-right: 10px;
+}
+body{
+    width: 100%;
+}
+main{
+    margin-left: 40px;
+}

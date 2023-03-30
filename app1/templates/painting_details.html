@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'painting_details.css' %}">
+</head>
+<body>
+    <header>
+        <p><a href="/paintings/new">Add Painting</a></p>
+        <p><a href="/paintings">Dashboard</a></p>
+        <p><button><a href="/logout">Logout</a></button></p>
+    </header>
+    <main>
+        <h1>{{painting.title}}</h1>
+        <p class="titles">Painted by {{painting.painted_by.first_name}} {{painting.painted_by.last_name}}</p>
+        <p class="titles">Description:</p>
+        <p class="content">{{painting.description}}</p>
+        <p class="titles extra">Price:</p>
+        <p class="content ">${{painting.price}}</p>
+        <p class="titles">Number Purchased:</p>
+        <p class="content ">{{painting.purchased}}</p>
+        {% if painting.purchased < painting.quantity %}
+            <p class="titles"><button><a href="/buy/{{painting.id}}">Buy</a></button></p>
+        {%else%}
+            <p>Sold Out</p>
+        {% endif %}
+    </main>
+</body>
+</html>

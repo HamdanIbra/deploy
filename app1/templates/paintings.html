@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'paintings.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+        <p><a href="/paintings/new">Add Painting</a></p>
+        <p class="logout" ><button><a href="/logout">Logout</a></button></p>
+    </header>
+    <div class="main-container">
+        <main>
+            <p>Paintings</p>
+            <div class="container">
+                {% for painting in all_paintings %}
+                    <p>
+                        <a href="/paintings/{{painting.id}}"> {{painting.title}} </a>by {{painting.painted_by.first_name}} {{painting.painted_by.last_name}} 
+                        {% if user.id == painting.painted_by.id %}
+                            <a href="/delete/{{painting.id}}">delete</a> | <a href="/paintings/{{painting.id}}/edit">edit</a>
+                        {% endif %}
+                    </p>
+                {% endfor %}
+            </div>
+        </main>
+        <div>
+            <p>Your Purchased Paintings</p>
+            <div class="container">
+                {% for painting in user.purchased_paintings.all %}
+                    <p>
+                        {{painting.title}} by {{painting.painted_by.first_name}} {{painting.painted_by.last_name}}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
